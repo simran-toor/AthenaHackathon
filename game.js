@@ -1,6 +1,6 @@
 let playerGamePiece, teacherGamePiece;
 const mainChar = document.querySelector(".main-char");
-const teacher = document.querySelector("teacher");
+const teacher = document.querySelector(".teacher");
 
 function startGame() {
   playerGamePiece = new component(50, 50, "green", 650, 425);
@@ -33,6 +33,8 @@ function component(width, height, color, x, y) {
   this.height = height;
   this.x = x;
   this.y = y;
+  this.bounce = 1;
+  this.gravitySpeed = 0;
   this.update = function () {
     ctx = myGameArea.context;
     ctx.fillStyle = color;
@@ -68,4 +70,5 @@ function updateGameArea() {
 
   teacherGamePiece.newPos();
   teacherGamePiece.update();
+  teacherGamePiece.hitEdge();
 }
